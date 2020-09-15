@@ -11,9 +11,12 @@ const app = express();
 // connect to MongoDB
 async function start(){
     try {
-
+       await mongoose.connect(config.get("mongoUri"), {
+           
+       });
     } catch (e){
-
+        console.log('Server Error', e.message);
+        process.exit(1);
     }
 }
 
