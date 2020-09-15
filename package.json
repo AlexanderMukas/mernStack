@@ -1,0 +1,30 @@
+{
+  "name": "mern-stack",
+  "version": "1.0.0",
+  "description": "Mern stack of develop",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexanderMukas/mernStack.git"
+  },
+  "keywords": [
+    "mongo",
+    "express",
+    "react",
+    "node"
+  ],
+  "author": "Alexander Mukas <alexandermukas@yahoo.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexanderMukas/mernStack/issues"
+  },
+  "homepage": "https://github.com/AlexanderMukas/mernStack#readme",
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.4"
+  }
+}
