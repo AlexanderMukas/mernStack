@@ -11,7 +11,7 @@ router.post(
     // need validation on server now
     [
         check('email', 'Некорректный email').isEmail(),
-        check('password', 'Минимальная длина пароль - 8 символов').isLength({ min: 8 })
+        check('password', 'Минимальная длина пароля - 8 символов').isLength({ min: 8 })
     ],
     async (req, res) => {
     try {
@@ -40,12 +40,6 @@ router.post(
         await user.save();
         // save done
         res.status(201).json({ message: 'Пользователь создан!'});
-
-
-
-
-
-
     } catch (e) {
         res.status(500).json({message : "Something went wrong..."});
 
