@@ -1,12 +1,27 @@
 const {Router} = require('express');
 const bcrypt = require('bcryptjs');
+const {check, validationResult} = require('express-validator');
 const router = Router();
 const User = require('../models/User');
 
 // we need 2 POST query
 //path : /api/auth/register
-router.post('/register', async (req, res) => {
+router.post(
+    '/register',
+    // need validation on server now
+    [
+        check('email', 'Некорректный email').isEmail(),
+        check('password', 'Минимальная длина пароль - 8 символов').isLength({ min: 8 })
+    ],
+    async (req, res) => {
     try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty) {
+            return res.status(400).json({ 
+                errors: errors.array(),
+                message: 'Некорректные данные при регистрации'
+            });
+        }
         // we need get @ and password from user
         const {email, password} = req.body;   // from frontend
         //проверка, если ли такой уже email при регистрации
