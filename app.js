@@ -13,7 +13,9 @@ const mongoose = require('mongoose');
 async function start(){
     try {
        await mongoose.connect(config.get("mongoUri"), {
-           
+           useNewUrlParser: true,
+           useUnifiedTopology: true,
+           useCreateIndex: true
        });
 
        app.listen(PORT, () => {
