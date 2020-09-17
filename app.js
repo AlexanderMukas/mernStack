@@ -1,14 +1,13 @@
-// import Express
 const express = require('express');
-const app = express();
-//from dir config
 const config = require('config');
-//mongodb
 const mongoose = require('mongoose');
 
+const app = express();
 
+// middleware
+app.use('/api/auth', require('./routes/auth.routes'));
 
-
+const PORT = config.get("port") || 5000;                        // if undefined, then port = 5000
 // connect to MongoDB
 async function start(){
     try {
@@ -27,11 +26,4 @@ async function start(){
     }
 }
 
-start()
-
-const PORT = config.get("port") || 5000;                        // if undefined, then port = 5000
-//const port = 5000;
-// app.listen(PORT, () => {
-//     console.log(`App has been started on port ${PORT}...`);
-// });
-
+start();
