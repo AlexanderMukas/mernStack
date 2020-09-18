@@ -4,9 +4,9 @@ import React from 'react';
 function App() {
   return (
     <div>
-      <H1>
+      <h1>
         Hello World!
-      </H1>
+      </h1>
     </div>
     
   );
