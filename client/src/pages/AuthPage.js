@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
+import { useHttp } from '../hooks/http.hook';
 // страница авторизации
 // используем materialyze
 
 export const AuthPage = () => {
     //use hooks
+    // const {loading, error, request} = useHttp();
+    const {loading, request} = useHttp();
+
+    // локальный State - form. Использование - ...form
     const [form, setForm] = useState({
         email:'', password:''
     });
@@ -11,8 +16,15 @@ export const AuthPage = () => {
     const changeHandler = event => {
         setForm({...form, [event.target.name]: event.target.value})
     }
-    // запросы на сервер
-    
+    // запросы на сервер, надо прицепик к кнопке
+    const registerHandler = async () => {
+        try{
+            const data = await request('/api/auth/register', 'POST', {...form}); // this is in backend
+            console.log(`Data: ${data} by Alexander Mukas`);
+        } catch(e) {}
+
+    }
+
     return (
         <div className="row">
             <div className="col s6 offset-s3">
@@ -50,8 +62,20 @@ export const AuthPage = () => {
                         </div>
                     </div>
                     <div className="card-action">
-                        <button className="btn yellow darken-4" style={{marginRight: 10}}>Sign in</button>
-                        <button className="btn grey lighten-1 black-text">Register</button>
+                        <button 
+                            className="btn yellow darken-4" 
+                            style={{marginRight: 10}}
+                            disabled={loading}
+                        >
+                            Sign in
+                        </button>
+                        <button 
+                            className="btn grey lighten-1 black-text"
+                            onClick={registerHandler}
+                            disabled={loading}
+                        >
+                            Register
+                        </button>
                     </div>
                 </div>
 
