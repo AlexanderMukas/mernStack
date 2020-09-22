@@ -16,7 +16,7 @@ export const AuthPage = () => {
                     </div>
                     <div className="card-action">
                         <button className="btn yellow darken-4">Sign in</button>
-                        <button className="btn yellow darken-4">Register</button>
+                        <button className="btn grey lighten-1 black-text">Register</button>
                     </div>
                 </div>
 
