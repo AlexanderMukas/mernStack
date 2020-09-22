@@ -17,6 +17,7 @@ export const AuthPage = () => {
                                     id="email" 
                                     type="text" 
                                     name="email"
+                                    className="yellow-input"
                                 />
                                 <label htmlFor="email">Email</label>
                             </div>
@@ -26,7 +27,8 @@ export const AuthPage = () => {
                                     placeholder="Enter password" 
                                     id="password" 
                                     type="password"
-                                    name="password" 
+                                    name="password"
+                                    className="yellow-input"
                                 />
                                 <label htmlFor="password">password</label>
                             </div>
